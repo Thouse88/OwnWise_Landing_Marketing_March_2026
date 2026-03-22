@@ -642,7 +642,7 @@
 
     /* ── HERO EMAIL FORM ── */
     .hero-email-form {
-      display: flex; gap: 10px; align-items: center;
+      display: flex; flex-direction: column; gap: 10px; align-items: stretch;
       width: 100%;
       max-width: 480px;
     }
@@ -674,9 +674,6 @@
       width: 100%;
     }
     @media (max-width: 560px) {
-      .hero-email-form { flex-direction: column; }
-      .hero-email-form input { width: 100%; }
-      .hero-email-form .btn-primary { width: 100%; text-align: center; }
       .nav-signup input { width: 140px; }
     }
     @media (max-width: 420px) {
