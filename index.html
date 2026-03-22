@@ -1371,7 +1371,27 @@
   reveals.forEach(el => observer.observe(el));
 
   // ── Email signup ──
-  function submitEmail(source) {
+  async function submitToFormspree(email, source) {
+    const res = await fetch('https://formspree.io/f/xwvrrylo', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email, source, _subject: 'OwnWise Early Access - ' + source })
+    });
+    if (!res.ok) throw new Error('Formspree responded with ' + res.status);
+  }
+
+  function showSignupError(container, message) {
+    let err = container.querySelector('.signup-error');
+    if (!err) {
+      err = document.createElement('p');
+      err.className = 'signup-error';
+      err.style.cssText = 'color:#e05;margin:8px 0 0;font-size:0.85rem;';
+      container.appendChild(err);
+    }
+    err.textContent = message;
+  }
+
+  async function submitEmail(source) {
     const inputId = source === 'nav' ? 'navEmail' : source === 'hero' ? 'heroEmail' : 'bottomEmail';
     const input = document.getElementById(inputId);
     const email = input.value.trim();
@@ -1383,42 +1403,39 @@
       return;
     }
 
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'email_signup', { event_category: 'conversion', event_label: source });
-    }
+    const btn = input.closest('div, form').querySelector('button');
+    const originalText = btn ? btn.textContent : '';
+    if (btn) { btn.textContent = 'Submitting…'; btn.disabled = true; }
 
-    // ── Connect your backend here ──
-    // Formspree:  fetch('https://formspree.io/f/YOUR_ID', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email, source}) })
-    // Make/Zapier: fetch('YOUR_WEBHOOK_URL', { method:'POST', body: JSON.stringify({email, source, date: new Date().toISOString()}) })
+    try {
+      await submitToFormspree(email, source);
 
-    console.log('Email signup:', { email, source });
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'email_signup', { event_category: 'conversion', event_label: source });
+      }
 
-    // ── Formspree: configured with form ID xwvrrylo ──
-    fetch('https://formspree.io/f/xwvrrylo', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email, source, _subject: 'OwnWise Early Access - ' + source })
-    }).catch(err => console.warn('Formspree error:', err));
-
-    if (source === 'hero') {
-      document.getElementById('heroSignup').style.display = 'none';
-      document.getElementById('heroSuccess').style.display = 'block';
-    } else if (source === 'cta') {
-      document.querySelectorAll('#ctaSignup input, #ctaSignup button').forEach(el => el.style.display = 'none');
-      document.getElementById('ctaSuccess').style.display = 'block';
-    } else if (source === 'bottom') {
-      document.querySelectorAll('#bottomSignup input, #bottomSignup button').forEach(el => el.style.display = 'none');
-      document.getElementById('bottomSuccess').style.display = 'block';
-    } else {
-      const btn = document.querySelector('.nav-signup button');
-      btn.textContent = '✓ You\'re in!';
-      btn.style.background = '#1270C0';
-      btn.disabled = true;
-      input.style.display = 'none';
+      if (source === 'hero') {
+        document.getElementById('heroSignup').style.display = 'none';
+        document.getElementById('heroSuccess').style.display = 'block';
+      } else if (source === 'cta') {
+        document.querySelectorAll('#ctaSignup input, #ctaSignup button').forEach(el => el.style.display = 'none');
+        document.getElementById('ctaSuccess').style.display = 'block';
+      } else if (source === 'bottom') {
+        document.querySelectorAll('#bottomSignup input, #bottomSignup button').forEach(el => el.style.display = 'none');
+        document.getElementById('bottomSuccess').style.display = 'block';
+      } else {
+        btn.textContent = '✓ You\'re in!';
+        btn.style.background = '#1270C0';
+        input.style.display = 'none';
+      }
+    } catch (err) {
+      console.warn('Formspree error:', err);
+      if (btn) { btn.textContent = originalText; btn.disabled = false; }
+      showSignupError(input.closest('div, form'), 'Something went wrong — please try again.');
     }
   }
 
-  function handleFormSubmit(event, source) {
+  async function handleFormSubmit(event, source) {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value.trim();
@@ -1430,22 +1447,28 @@
       return false;
     }
 
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'email_signup', { event_category: 'conversion', event_label: source, email });
-    }
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn ? btn.textContent : '';
+    if (btn) { btn.textContent = 'Submitting…'; btn.disabled = true; }
 
-    fetch('https://formspree.io/f/xwvrrylo', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email, source, _subject: 'OwnWise Early Access - ' + source })
-    }).catch(err => console.warn('Formspree error:', err));
+    try {
+      await submitToFormspree(email, source);
 
-    if (source === 'hero') {
-      document.querySelector('.hero-email-form').style.display = 'none';
-      document.getElementById('heroSuccess').style.display = 'block';
-    } else if (source === 'cta') {
-      document.getElementById('ctaSignup').style.display = 'none';
-      document.getElementById('ctaSuccess').style.display = 'block';
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'email_signup', { event_category: 'conversion', event_label: source });
+      }
+
+      if (source === 'hero') {
+        form.style.display = 'none';
+        document.getElementById('heroSuccess').style.display = 'block';
+      } else if (source === 'cta') {
+        document.getElementById('ctaSignup').style.display = 'none';
+        document.getElementById('ctaSuccess').style.display = 'block';
+      }
+    } catch (err) {
+      console.warn('Formspree error:', err);
+      if (btn) { btn.textContent = originalText; btn.disabled = false; }
+      showSignupError(form, 'Something went wrong — please try again.');
     }
 
     return false;
