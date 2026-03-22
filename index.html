@@ -1099,8 +1099,6 @@
   <div class="hero-inner">
     <div class="hero-left">
       <h1>Don't pay $300 for a repair visit before checking with <em>OwnWise.</em></h1>
-    <div class="hero-left">
-      <h1>Don't pay $300 for a repair visit before checking with <em>OwnWise.</em></h1>
       <div class="hero-cta-group">
         <div class="hero-badge" style="margin-bottom:16px;">Launching Spring 2026</div>
         <form action="https://formspree.io/f/xwvrrylo" method="POST" class="hero-email-form" onsubmit="return handleFormSubmit(event, 'hero')">
@@ -1391,50 +1389,6 @@
     err.textContent = message;
   }
 
-  async function submitEmail(source) {
-    const inputId = source === 'nav' ? 'navEmail' : source === 'hero' ? 'heroEmail' : 'bottomEmail';
-    const input = document.getElementById(inputId);
-    const email = input.value.trim();
-
-    if (!email || !email.includes('@')) {
-      input.focus();
-      input.style.borderColor = 'rgba(255,100,100,0.7)';
-      setTimeout(() => input.style.borderColor = '', 1500);
-      return;
-    }
-
-    const btn = input.closest('div, form').querySelector('button');
-    const originalText = btn ? btn.textContent : '';
-    if (btn) { btn.textContent = 'Submitting…'; btn.disabled = true; }
-
-    try {
-      await submitToFormspree(email, source);
-
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'email_signup', { event_category: 'conversion', event_label: source });
-      }
-
-      if (source === 'hero') {
-        document.getElementById('heroSignup').style.display = 'none';
-        document.getElementById('heroSuccess').style.display = 'block';
-      } else if (source === 'cta') {
-        document.querySelectorAll('#ctaSignup input, #ctaSignup button').forEach(el => el.style.display = 'none');
-        document.getElementById('ctaSuccess').style.display = 'block';
-      } else if (source === 'bottom') {
-        document.querySelectorAll('#bottomSignup input, #bottomSignup button').forEach(el => el.style.display = 'none');
-        document.getElementById('bottomSuccess').style.display = 'block';
-      } else {
-        btn.textContent = '✓ You\'re in!';
-        btn.style.background = '#1270C0';
-        input.style.display = 'none';
-      }
-    } catch (err) {
-      console.warn('Formspree error:', err);
-      if (btn) { btn.textContent = originalText; btn.disabled = false; }
-      showSignupError(input.closest('div, form'), 'Something went wrong — please try again.');
-    }
-  }
-
   async function handleFormSubmit(event, source) {
     event.preventDefault();
     const form = event.target;
@@ -1489,12 +1443,12 @@
     }
   }
 
-  // Enter key support
+  // Enter key support — submit the parent form, which triggers onsubmit/handleFormSubmit
   document.querySelectorAll('input[type="email"]').forEach(input => {
     input.addEventListener('keydown', e => {
       if (e.key === 'Enter') {
-        const src = e.target.id === 'navEmail' ? 'nav' : e.target.id === 'heroEmail' ? 'hero' : 'bottom';
-        submitEmail(src);
+        const form = e.target.closest('form');
+        if (form) form.requestSubmit();
       }
     });
   });
