@@ -4,18 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OwnWise — Fix Smarter. Spend Less.</title>
-  <meta name="description" content="OwnWise finds the fastest, cheapest way to fix your home and appliances — using warranties you already have. Join the waitlist today." />
-
-  <!-- Open Graph -->
+  <meta name="description" content="OwnWise uses AI to find warranties you already have, file claims automatically, and help you fix your home for less. Join the waitlist." />
   <meta property="og:title" content="OwnWise — Fix Smarter. Spend Less." />
-  <meta property="og:description" content="OwnWise finds the fastest, cheapest way to fix your home and appliances — using warranties you already have." />
+  <meta property="og:description" content="Stop overpaying for repairs. OwnWise finds your coverage and files claims for you." />
   <meta property="og:image" content="https://getownwise.com/og-image.png" />
   <meta property="og:url" content="https://getownwise.com" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://getownwise.com/og-image.png" />
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCP3GKZDB9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -24,25 +21,26 @@
     gtag('config', 'G-LCP3GKZDB9');
   </script>
 
-  <!-- Fonts: Poppins -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --white:      #FFFFFF;
-      --off-white:  #F7F9FC;
-      --navy:       #0F1F3D;
-      --navy-mid:   #1A3260;
+      --navy:       #0B1A35;
+      --navy-mid:   #112241;
+      --navy-light: #1A3260;
       --accent:     #1A8FE3;
-      --accent-lt:  #2B9FF5;
-      --text:       #1C2B40;
-      --muted:      #6B7A90;
-      --border:     #E2E6EC;
-      --red:        #C94F4F;
+      --accent-lt:  #3BAAF5;
+      --accent-glow:rgba(26,143,227,0.35);
+      --white:      #FFFFFF;
+      --off-white:  #F4F7FB;
+      --muted:      #7A8899;
+      --border:     #E0E6EF;
+      --text:       #1A2B3C;
     }
 
     html { scroll-behavior: smooth; }
@@ -53,39 +51,39 @@
       background: var(--white);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(8px);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px;
-      height: 68px;
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 1px 12px rgba(15,31,61,0.06);
+      height: 62px;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
     }
     .nav-logo {
       font-family: 'Poppins', sans-serif;
-      font-size: 1.55rem;
+      font-size: 1.7rem;
       font-weight: 800;
       color: var(--navy);
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
+      text-decoration: none;
     }
     .nav-logo span { color: var(--accent); }
-    .nav-right {
-      display: flex; align-items: center; gap: 14px;
-    }
-    .nav-pill {
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .badge-pill {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
       background: rgba(26,143,227,0.1);
       border: 1px solid rgba(26,143,227,0.25);
-      color: var(--accent);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 5px 13px;
+      padding: 4px 12px;
       border-radius: 20px;
     }
     .nav-cta {
@@ -93,44 +91,40 @@
       color: var(--white);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.875rem;
-      padding: 10px 22px;
-      border-radius: 8px;
-      transition: background 0.2s, transform 0.15s;
+      font-size: 0.85rem;
+      padding: 9px 22px;
+      border-radius: 7px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 2px 12px rgba(26,143,227,0.4);
     }
-    .nav-cta:hover { background: var(--accent-lt); transform: translateY(-1px); }
-    @media (max-width: 600px) {
+    .nav-cta:hover { background: var(--accent-lt); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(26,143,227,0.5); }
+    @media (max-width: 640px) {
       nav { padding: 0 20px; }
-      .nav-pill { display: none; }
+      .badge-pill { display: none; }
     }
 
     /* ── HERO ── */
     .hero {
-      padding: 110px 48px 80px;
-      background: linear-gradient(150deg, #ffffff 0%, #f0f6ff 50%, #e8f2fe 100%);
+      min-height: 100vh;
+      background: #ffffff;
+      padding: 120px 48px 80px;
       position: relative;
       overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; top: -20%; right: -10%;
-      width: 60%; height: 80%;
-      background: radial-gradient(ellipse at center, rgba(26,143,227,0.08) 0%, transparent 65%);
-      border-radius: 50%;
-      pointer-events: none;
+      display: flex;
+      align-items: center;
     }
     .hero-inner {
-      max-width: 1160px;
+      max-width: 1120px;
       margin: 0 auto;
+      width: 100%;
       display: grid;
-      grid-template-columns: 1fr 1.05fr;
-      align-items: center;
+      grid-template-columns: 1fr 1fr;
       gap: 48px;
+      align-items: center;
       position: relative; z-index: 1;
     }
-    .hero-left { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
-    .hero-badge {
-      display: inline-block;
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
       background: rgba(26,143,227,0.1);
       border: 1px solid rgba(26,143,227,0.25);
       color: var(--accent);
@@ -138,37 +132,52 @@
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 5px 14px;
+      padding: 6px 14px;
       border-radius: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 28px;
       animation: fadeUp 0.6s ease both;
+    }
+    .hero-tag .dot {
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
     }
     h1 {
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(2.2rem, 4.2vw, 3.5rem);
+      font-size: clamp(2.4rem, 4.2vw, 3.6rem);
       font-weight: 800;
       color: var(--navy);
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 28px;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      margin-bottom: 22px;
       animation: fadeUp 0.6s 0.1s ease both;
     }
-    h1 em {
-      font-style: normal;
-      color: var(--accent);
+    h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: #5A6B7C;
+      max-width: 440px;
+      line-height: 1.75;
+      margin-bottom: 36px;
+      animation: fadeUp 0.6s 0.2s ease both;
     }
-    .hero-email-form {
+    .hero-form-wrap { animation: fadeUp 0.6s 0.3s ease both; }
+    .hero-form {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      width: 100%;
-      max-width: 460px;
-      animation: fadeUp 0.6s 0.2s ease both;
+      max-width: 420px;
     }
-    .hero-email-form input[type="email"] {
-      width: 100%;
-      padding: 15px 18px;
-      border-radius: 10px;
+    .input-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hero-form input[type="email"] {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 9px;
       border: 1.5px solid var(--border);
       background: var(--white);
       color: var(--text);
@@ -176,10 +185,10 @@
       font-size: 0.95rem;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
-      box-shadow: 0 2px 8px rgba(15,31,61,0.06);
+      min-width: 0;
     }
-    .hero-email-form input[type="email"]::placeholder { color: var(--muted); }
-    .hero-email-form input[type="email"]:focus {
+    .hero-form input[type="email"]::placeholder { color: var(--muted); }
+    .hero-form input[type="email"]:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(26,143,227,0.12);
     }
@@ -188,85 +197,117 @@
       color: var(--white);
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: 1rem;
-      padding: 15px 28px;
-      border-radius: 10px;
+      font-size: 0.95rem;
+      padding: 14px 26px;
+      border-radius: 9px;
       border: none;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
       transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(26,143,227,0.35);
-      text-align: center;
+      box-shadow: 0 4px 20px rgba(26,143,227,0.45);
+      white-space: nowrap;
       width: 100%;
+      text-align: center;
     }
-    .btn-primary:hover {
-      background: var(--accent-lt);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 28px rgba(26,143,227,0.45);
-    }
+    .btn-primary:hover { background: var(--accent-lt); transform: translateY(-1px); box-shadow: 0 6px 28px rgba(26,143,227,0.55); }
     .hero-note {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--muted);
-      margin-top: 8px;
-      animation: fadeUp 0.6s 0.3s ease both;
+      display: flex; align-items: center; gap: 6px;
     }
     .hero-success {
       display: none;
-      background: rgba(26,143,227,0.1);
-      border: 1px solid rgba(26,143,227,0.3);
-      color: var(--accent);
-      border-radius: 10px;
+      background: rgba(26,143,227,0.18);
+      border: 1px solid rgba(59,170,245,0.45);
+      color: #1A8FE3;
+      border-radius: 9px;
       padding: 14px 20px;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      max-width: 460px;
-      width: 100%;
     }
     .hero-right {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
-      animation: fadeUp 0.7s 0.25s ease both;
+      animation: fadeUp 0.7s 0.35s ease both;
     }
-    .hero-phone {
+    .hero-right img {
       width: 100%;
-      max-width: 680px;
-      display: block;
-      margin-left: auto;
-      filter: drop-shadow(0 24px 56px rgba(15,31,61,0.18));
+      max-width: 480px;
     }
     @media (max-width: 860px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 40px;
-      }
-      .hero-left { align-items: center; }
-      .hero-email-form { max-width: 420px; margin: 0 auto; }
-      .hero-right { order: -1; }
-      .hero-phone { max-width: 480px; margin: 0 auto; }
+      .hero { padding: 110px 24px 70px; min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+      .hero-right { justify-content: center; order: -1; }
+      .hero-right img { max-width: 320px; }
+      .hero-sub { margin: 0 auto 36px; }
+      .hero-form { max-width: 100%; }
+      .hero-tag { align-self: center; }
+      .hero-note { justify-content: center; }
     }
     @media (max-width: 480px) {
-      .hero { padding: 90px 20px 60px; }
-      h1 { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+      h1 { font-size: clamp(2rem, 7.5vw, 2.4rem); }
+      .hero-right img { max-width: 260px; }
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--navy-mid);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 48px 48px;
+    }
+    .stats-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      text-align: center;
+    }
+    .stat-block { padding: 12px 16px; }
+    .stat-block + .stat-block { border-left: 1px solid rgba(255,255,255,0.08); }
+    .stat-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--accent-lt);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.52);
+      line-height: 1.5;
+      max-width: 150px;
+      margin: 0 auto;
+    }
+    @media (max-width: 700px) {
+      .stats-bar { padding: 36px 20px; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 32px 8px; }
+      .stat-block + .stat-block { border-left: none; }
+      .stat-block:nth-child(2) { border-left: 1px solid rgba(255,255,255,0.08); }
+      .stat-block:nth-child(3), .stat-block:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.08); }
+      .stat-block:nth-child(4) { border-left: 1px solid rgba(255,255,255,0.08); }
     }
 
     /* ── BRANDS BAR ── */
     .brands-bar {
       background: var(--white);
+      border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 14px 40px;
+      padding: 18px 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
     }
     .brands-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.07em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
       white-space: nowrap;
@@ -276,537 +317,276 @@
       align-items: center;
       gap: 6px;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .brands-list span {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: #1260B0;
-      padding: 5px 12px;
-      border: 1.5px solid rgba(26,143,227,0.25);
+      padding: 4px 12px;
+      border: 1.5px solid rgba(26,143,227,0.22);
       border-radius: 20px;
       background: rgba(26,143,227,0.06);
     }
-    .brands-list .brands-more {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--muted);
-      border: none;
-      background: none;
-      padding: 4px;
-    }
-    @media (max-width: 480px) {
-      .brands-bar { gap: 8px; padding: 12px 16px; }
-    }
+    .brands-more { font-size: 0.8rem; font-weight: 500; color: var(--muted); }
+    @media (max-width: 480px) { .brands-bar { padding: 14px 20px; gap: 8px; } }
 
     /* ── SHARED SECTION STYLES ── */
     section { padding: 88px 48px; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-label {
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .sec-label {
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     h2 {
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
-      font-weight: 800;
+      font-size: clamp(1.9rem, 3.5vw, 2.55rem);
+      font-weight: 700;
       color: var(--navy);
-      line-height: 1.2;
-      letter-spacing: -0.03em;
+      line-height: 1.18;
+      letter-spacing: -0.025em;
       margin-bottom: 16px;
     }
-    .section-desc {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 520px;
+    h2.light { color: var(--white); }
+    .sec-desc {
+      font-size: 1rem;
+      color: #5A6B7C;
+      max-width: 500px;
       line-height: 1.75;
     }
-    @media (max-width: 768px) {
-      section { padding: 64px 20px; }
-    }
-    @media (max-width: 480px) {
-      h2 { font-size: clamp(1.6rem, 6vw, 2rem); }
-    }
+    .sec-desc.light { color: rgba(255,255,255,0.55); }
+    @media (max-width: 768px) { section { padding: 64px 24px; } }
 
-    /* ── PROBLEM ── */
-    .problem { background: var(--white); }
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto auto;
-      gap: 4px 16px;
-      align-items: stretch;
-      margin-top: 48px;
-    }
-    .problem-card {
-      background: var(--off-white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px 20px;
-      text-align: center;
-    }
-    .problem-stat {
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
-      font-weight: 800;
-      color: var(--red);
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-    .problem-card p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .problem-photo-wrap {
-      height: 260px;
-      overflow: hidden;
-      border-radius: 12px;
-      margin-top: 12px;
-    }
-    .problem-photo-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-    }
-    .problem-source {
-      text-align: left;
-      font-size: 0.76rem;
-      color: #8A97A8;
-      margin-top: 2px;
-      padding-left: 2px;
-    }
-    @media (max-width: 640px) {
-      .problem-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        gap: 16px;
-      }
-      .problem-grid > * { grid-column: 1 !important; grid-row: auto !important; }
-      .problem-photo-wrap { height: 200px; }
+    /* ── MEET ANDY ── */
+    .meet-andy { background: #ffffff; text-align: center; }
+    .meet-andy .sec-label { color: var(--accent); }
+    .meet-andy h2 { color: var(--navy); margin: 0 auto 14px; max-width: 640px; }
+    .meet-andy .sec-desc { color: #5A6B7C; margin: 0 auto 52px; }
+    .screens-img {
+      width: 100%;
+      max-width: 960px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 16px;
     }
 
     /* ── HOW IT WORKS ── */
-    .how-it-works { background: var(--off-white); }
-    .how-it-works h2 { text-align: center; }
-    .how-sub { text-align: center; color: var(--muted); font-size: 1.05rem; max-width: 480px; margin: 0 auto 56px; }
-    .hiw-cards {
+    .how-it-works { background: var(--navy); }
+    .how-it-works .sec-label { color: var(--accent-lt); }
+    .hiw-header { text-align: center; margin-bottom: 56px; }
+    .hiw-header .sec-desc { margin: 0 auto; }
+    .steps-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 28px;
     }
-    .hiw-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px 24px;
-      position: relative;
-      transition: box-shadow 0.2s, transform 0.2s;
+    @media (max-width: 860px) { .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; } }
+    @media (max-width: 480px) { .steps-grid { grid-template-columns: 1fr; } }
+    .step-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 14px;
+      padding: 28px 22px;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
     }
-    .hiw-card:hover {
-      box-shadow: 0 8px 32px rgba(15,31,61,0.1);
+    .step-card:hover {
+      border-color: rgba(59,170,245,0.35);
+      background: rgba(59,170,245,0.05);
       transform: translateY(-3px);
     }
-    .hiw-num {
-      font-size: 3.5rem;
+    .step-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem;
       font-weight: 800;
-      color: var(--accent);
-      opacity: 0.15;
+      color: var(--accent-lt);
+      opacity: 0.25;
       line-height: 1;
-      margin-bottom: 12px;
-    }
-    .hiw-card h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--navy);
       margin-bottom: 10px;
     }
-    .hiw-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    @media (max-width: 900px) {
-      .hiw-cards { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 500px) {
-      .hiw-cards { grid-template-columns: 1fr; }
-    }
+    .step-card h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.3; }
+    .step-card p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
 
-    /* ── MEET ANDY ── */
-    .meet-andy { background: var(--white); }
-    .andy-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .andy-text .section-label { margin-bottom: 12px; }
-    .andy-text h2 { margin-bottom: 16px; }
-    .andy-text p {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 24px;
-    }
-    .andy-features {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .andy-feature {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-    .andy-feature-icon {
-      width: 32px; height: 32px; flex-shrink: 0;
-      background: rgba(26,143,227,0.1);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-    }
-    .andy-feature-text h4 {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 2px;
-    }
-    .andy-feature-text p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.55;
-      margin: 0;
-    }
-    .andy-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .andy-image img {
-      width: 100%;
-      max-width: 480px;
-      display: block;
-      border-radius: 20px;
-      filter: drop-shadow(0 20px 48px rgba(15,31,61,0.14));
-    }
-    @media (max-width: 860px) {
-      .andy-inner { grid-template-columns: 1fr; gap: 40px; }
-      .andy-image { order: -1; }
-      .andy-image img { max-width: 380px; margin: 0 auto; }
-    }
+    /* ── ANDY AI / CHAT SCREENS ── */
+    .andy-ai { background: var(--white); text-align: center; }
+    .andy-ai.alt { background: var(--off-white); }
+    .andy-ai .sec-label { color: var(--accent); }
+    .andy-ai h2 { color: var(--navy); margin: 0 auto 14px; max-width: 620px; }
+    .andy-ai .sec-desc { color: #5A6B7C; margin: 0 auto 52px; }
 
-    /* ── COVERAGE TYPES ── */
-    .coverage { background: var(--navy); }
-    .coverage h2 { color: var(--white); text-align: center; }
-    .coverage .section-label { color: rgba(91,184,245,0.8); text-align: center; }
-    .coverage .section-desc { color: rgba(255,255,255,0.55); text-align: center; margin: 0 auto 52px; }
+    /* ── COVERAGE GRID ── */
+    .coverage { background: var(--navy-mid); }
+    .coverage .sec-label { color: var(--accent-lt); }
+    .cov-header { text-align: center; margin-bottom: 52px; }
+    .cov-header .sec-desc { margin: 0 auto; }
     .cov-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 16px;
     }
+    @media (max-width: 760px) { .cov-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 440px) { .cov-grid { grid-template-columns: 1fr; } }
     .cov-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 14px;
-      padding: 28px 24px;
-      transition: transform 0.2s, border-color 0.2s, background 0.2s;
-      cursor: default;
+      padding: 26px 22px;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
     .cov-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(91,184,245,0.4);
-      background: rgba(91,184,245,0.08);
+      border-color: rgba(59,170,245,0.4);
+      background: rgba(59,170,245,0.07);
     }
-    .cov-icon { font-size: 1.6rem; margin-bottom: 14px; display: block; }
-    .cov-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
-    }
-    .cov-card p {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.45);
-      line-height: 1.65;
-    }
-    @media (max-width: 700px) { .cov-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 420px) { .cov-grid { grid-template-columns: 1fr; } }
-
-    /* ── ANDY AI SECTION (app screens showcase) ── */
-    .andy-ai { background: var(--off-white); }
-    .andy-ai-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .andy-ai-image img {
-      width: 100%;
-      max-width: 480px;
-      display: block;
-      margin: 0 auto;
-      border-radius: 20px;
-      filter: drop-shadow(0 20px 48px rgba(15,31,61,0.14));
-    }
-    .andy-ai-text .section-label { margin-bottom: 12px; }
-    .andy-ai-text h2 { margin-bottom: 16px; }
-    .andy-ai-text p {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-    .andy-chat-bubbles {
-      margin-top: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .bubble {
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-size: 0.88rem;
-      line-height: 1.6;
-      max-width: 320px;
-    }
-    .bubble-user {
-      background: var(--accent);
-      color: var(--white);
-      border-bottom-right-radius: 4px;
-      align-self: flex-end;
-      max-width: 280px;
-    }
-    .bubble-andy {
-      background: var(--white);
-      border: 1px solid var(--border);
-      color: var(--text);
-      border-bottom-left-radius: 4px;
-    }
-    .bubble-andy strong { color: var(--navy); }
-    @media (max-width: 860px) {
-      .andy-ai-inner { grid-template-columns: 1fr; gap: 40px; }
-      .andy-ai-image img { max-width: 360px; }
-    }
-
-    /* ── DIY SECTION ── */
-    .diy-section { background: var(--white); }
-    .diy-section h2 { text-align: center; margin-bottom: 52px; }
-    .diy-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
-    }
-    .diy-grid img {
-      width: 100%;
-      display: block;
-      border-radius: 16px;
-      filter: drop-shadow(0 16px 40px rgba(15,31,61,0.1));
-    }
-    .diy-list {
-      list-style: none;
-      padding: 0; margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-    .diy-list li {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
-    .diy-check {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 1.25rem;
-      margin-top: 1px;
-      flex-shrink: 0;
-    }
-    .diy-list p {
-      font-size: 1.15rem;
-      color: var(--text);
-      line-height: 1.65;
-      margin: 0;
-    }
-    @media (max-width: 768px) {
-      .diy-section { padding: 64px 20px; }
-      .diy-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-    }
-
-    /* ── INTELLIGENT OS / KEY FEATURES ── */
-    .key-features { background: var(--off-white); }
-    .key-features h2 { text-align: center; margin-bottom: 40px; }
-    .kf-desktop-img { text-align: center; }
-    .kf-desktop-img img {
-      max-width: 100%;
-      border-radius: 12px;
-      display: inline-block;
-    }
-    .kf-tagline {
-      margin-top: 24px;
-      font-size: 1.5rem;
-      color: var(--text);
-      font-weight: 600;
-      text-align: center;
-    }
-    .kf-mobile-stack { display: none; }
-    @media (max-width: 768px) {
-      .kf-desktop-img { display: none !important; }
-      .kf-mobile-stack {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-        margin-top: 32px;
-      }
-      .kf-mobile-item { text-align: center; width: 100%; }
-    }
+    .cov-icon { display: block; margin-bottom: 14px; line-height: 1; }
+    .cov-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .cov-card p { font-size: 0.82rem; color: rgba(255,255,255,0.44); line-height: 1.65; }
 
     /* ── FAQ ── */
-    .faq { background: var(--white); }
-    .faq-list { margin-top: 48px; max-width: 720px; }
-    .faq-item {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      margin-bottom: 10px;
-      background: var(--off-white);
-      overflow: hidden;
+    .faq { background: var(--off-white); }
+    .faq-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 64px;
+      align-items: start;
     }
+    @media (max-width: 768px) { .faq-wrap { grid-template-columns: 1fr; gap: 32px; } }
+    .faq-left h2 { margin-bottom: 14px; }
+    .faq-left .sec-desc { margin-bottom: 32px; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .faq-item:hover { box-shadow: 0 4px 16px rgba(11,26,53,0.07); }
     .faq-q {
       width: 100%;
       background: none;
       border: none;
-      padding: 19px 24px;
+      padding: 17px 22px;
       text-align: left;
       font-family: 'Poppins', sans-serif;
-      font-size: 0.93rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--navy);
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       transition: color 0.15s;
     }
     .faq-q:hover { color: var(--accent); }
-    .faq-icon { font-size: 1.4rem; font-weight: 300; flex-shrink: 0; transition: transform 0.25s; line-height: 1; }
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease;
-    }
+    .faq-icon { font-size: 1.3rem; font-weight: 300; flex-shrink: 0; transition: transform 0.25s; line-height: 1; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
     .faq-a.open { max-height: 300px; }
-    .faq-a p {
-      padding: 0 24px 20px;
-      font-size: 0.875rem;
-      color: var(--muted);
-      line-height: 1.75;
-      margin: 0;
-    }
+    .faq-a p { padding: 0 22px 18px; font-size: 0.85rem; color: #5A687C; line-height: 1.75; }
     .faq-item.open .faq-icon { transform: rotate(45deg); }
-    @media (max-width: 640px) { .faq-a.open { max-height: 400px; } }
 
-    /* ── CTA / WAITLIST ── */
-    .waitlist {
-      background: var(--navy);
+    /* ── FINAL CTA ── */
+    .final-cta {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(26,143,227,0.2) 0%, transparent 60%),
+        linear-gradient(160deg, #0B1A35 0%, #0F2048 60%, #112241 100%);
       text-align: center;
       padding: 96px 48px;
+      position: relative;
+      overflow: hidden;
     }
-    .waitlist .section-label { color: rgba(91,184,245,0.8); margin-bottom: 16px; }
-    .waitlist h2 { color: var(--white); margin-bottom: 14px; }
-    .waitlist-sub {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.55);
-      max-width: 440px;
-      margin: 0 auto 40px;
-      line-height: 1.7;
+    .final-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(26,143,227,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,143,227,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
     }
-    .cta-form-wrap {
-      max-width: 440px;
-      margin: 0 auto;
+    .final-cta .inner { position: relative; z-index: 1; max-width: 580px; margin: 0 auto; }
+    .final-cta .sec-label { color: var(--accent-lt); margin-bottom: 18px; }
+    .final-cta h2 { color: var(--white); font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 16px; }
+    .final-cta .sec-desc { margin: 0 auto 44px; color: rgba(255,255,255,0.55); }
+    .cta-form {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      max-width: 440px;
+      margin: 0 auto;
     }
-    .cta-form-wrap input[type="email"] {
+    .cta-input-row { display: flex; flex-direction: column; gap: 10px; }
+    .cta-form input[type="email"] {
       width: 100%;
-      padding: 15px 18px;
-      border-radius: 10px;
+      padding: 14px 18px;
+      border-radius: 9px;
       border: 1.5px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.07);
       color: var(--white);
       font-family: 'Poppins', sans-serif;
       font-size: 0.95rem;
       outline: none;
       transition: border-color 0.2s;
+      min-width: 0;
     }
-    .cta-form-wrap input[type="email"]::placeholder { color: rgba(255,255,255,0.38); }
-    .cta-form-wrap input[type="email"]:focus { border-color: rgba(91,184,245,0.6); }
-    .cta-form-wrap .btn-primary {
-      background: var(--accent);
-      box-shadow: 0 4px 20px rgba(26,143,227,0.4);
-    }
-    .cta-fine {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.28);
-      margin-top: 12px;
-    }
+    .cta-form input[type="email"]::placeholder { color: rgba(255,255,255,0.35); }
+    .cta-form input[type="email"]:focus { border-color: rgba(59,170,245,0.6); }
+    .cta-fine { font-size: 0.76rem; color: rgba(255,255,255,0.28); margin-top: 8px; }
     .cta-success {
       display: none;
-      background: rgba(26,143,227,0.2);
-      border: 1px solid rgba(91,184,245,0.4);
-      color: #5BB8F5;
-      border-radius: 10px;
+      background: rgba(26,143,227,0.18);
+      border: 1px solid rgba(59,170,245,0.4);
+      color: #5BC8F5;
+      border-radius: 9px;
       padding: 14px 20px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       max-width: 440px;
       margin: 0 auto;
     }
-    @media (max-width: 768px) { .waitlist { padding: 72px 20px; } }
+    @media (max-width: 540px) { .final-cta { padding: 72px 24px; } }
 
     /* ── FOOTER ── */
     footer {
-      background: #080F1E;
+      background: #060F20;
       color: rgba(255,255,255,0.3);
       text-align: center;
-      padding: 32px 40px;
-      font-size: 0.82rem;
+      padding: 28px 40px;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
-    footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
+    footer a { color: rgba(255,255,255,0.42); text-decoration: none; }
     footer a:hover { color: rgba(255,255,255,0.7); }
+    .footer-row { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
+      from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.85); }
     }
     .reveal {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(22px);
       transition: opacity 0.55s ease, transform 0.55s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
-
 <body>
 
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Own<span>Wise</span></div>
   <div class="nav-right">
-    <span class="nav-pill">Spring 2026</span>
+    <span class="badge-pill">Spring 2026</span>
     <a href="#waitlist" class="nav-cta">Get Early Access</a>
   </div>
 </nav>
@@ -815,428 +595,319 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-badge">Launching Spring 2026</div>
-      <h1>Don't pay $300 for a repair visit before checking with <em>OwnWise.</em></h1>
-      <form action="https://formspree.io/f/xwvrrylo" method="POST" class="hero-email-form" onsubmit="return handleFormSubmit(event, 'hero')">
-        <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required>
-        <input type="hidden" name="_subject" value="OwnWise Early Access - Hero Signup">
-        <input type="hidden" name="source" value="hero">
-        <button type="submit" class="btn-primary">Get 1 Year Free →</button>
-      </form>
-      <div class="hero-success" id="heroSuccess">✓ You're on the list — we'll be in touch soon!</div>
-      <p class="hero-note">Free to join. No spam, ever. We don't sell your data.</p>
+      <div class="hero-tag">
+        <span class="dot"></span> Launching Spring 2026
+      </div>
+      <h1>Stop paying $300 for a repair visit. <em>Check OwnWise first.</em></h1>
+      <p class="hero-sub">OwnWise uses AI to find warranties you already own, file claims automatically, and fix your home for less — before you ever call a technician.</p>
+      <div class="hero-form-wrap">
+        <form class="hero-form" onsubmit="return handleSubmit(event, 'hero')">
+          <div class="input-row">
+            <input type="email" name="email" placeholder="Enter your email address" autocomplete="email" required />
+            <button type="submit" class="btn-primary">Get 1 Year Free →</button>
+          </div>
+          <p class="hero-note">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Free to join. No spam, ever. We don't sell your data.
+          </p>
+        </form>
+        <div class="hero-success" id="heroSuccess">✓ You're on the list — we'll be in touch soon!</div>
+      </div>
     </div>
     <div class="hero-right">
-      <img class="hero-phone" src="hero-phone.png" loading="eager" decoding="async" alt="OwnWise app — Ask Andy AI assistant helping diagnose a broken appliance" />
+      <img src="hero-phone.png" loading="eager" decoding="async" alt="OwnWise app — Broken Happens. We handle the rest." />
     </div>
   </div>
 </section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-block reveal">
+      <div class="stat-num">$200–300</div>
+      <div class="stat-label">Average cost of a single home repair visit</div>
+    </div>
+    <div class="stat-block reveal">
+      <div class="stat-num">Only 4%</div>
+      <div class="stat-label">of owners with a broken appliance ever file a warranty claim</div>
+    </div>
+    <div class="stat-block reveal">
+      <div class="stat-num">12+ hrs</div>
+      <div class="stat-label">Average time homeowners lose managing repairs each year</div>
+    </div>
+    <div class="stat-block reveal">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Major appliance &amp; HVAC brands fully supported</div>
+    </div>
+  </div>
+</div>
 
 <!-- BRANDS BAR -->
 <div class="brands-bar">
   <span class="brands-label">Supports</span>
   <div class="brands-list">
-    <span>Whirlpool</span>
-    <span>Maytag</span>
-    <span>LG</span>
-    <span>Samsung</span>
-    <span>GE</span>
-    <span>Electrolux</span>
-    <span>Bosch</span>
-    <span>Frigidaire</span>
-    <span>Carrier</span>
-    <span>Trane</span>
-    <span>Lennox</span>
-    <span>KitchenAid</span>
-    <span>Miele</span>
+    <span>Whirlpool</span><span>LG</span><span>Samsung</span><span>GE</span>
+    <span>Bosch</span><span>Maytag</span><span>Electrolux</span><span>Frigidaire</span>
+    <span>Carrier</span><span>Trane</span><span>KitchenAid</span><span>Miele</span>
     <span class="brands-more">+ more</span>
   </div>
 </div>
 
-<!-- PROBLEM -->
-<section class="problem">
+<!-- MEET ANDY -->
+<section class="meet-andy">
   <div class="section-inner">
-    <h2 class="reveal" style="text-align:center;color:var(--red);">Repairs cost time and money</h2>
-    <div class="problem-grid reveal">
-      <!-- Stat 1 -->
-      <div class="problem-card" style="grid-column:1;grid-row:1;">
-        <div class="problem-stat">$200–$300</div>
-        <p>Average repair cost</p>
-      </div>
-      <p class="problem-source" style="grid-column:1;grid-row:2;">HomeAdvisor, 2025</p>
-      <div class="problem-photo-wrap" style="grid-column:1;grid-row:3;">
-        <img src="broken-fridge.webp" loading="lazy" decoding="async" width="1200" height="800" alt="Broken fridge repair bill" />
-      </div>
-      <!-- Stat 2 -->
-      <div class="problem-card" style="grid-column:2;grid-row:1;">
-        <div class="problem-stat">Only 4%</div>
-        <p>of owners of a broken appliance file a warranty claim</p>
-      </div>
-      <p class="problem-source" style="grid-column:2;grid-row:2;">Allstate Protection Plans, 2022</p>
-      <div class="problem-photo-wrap" style="grid-column:2;grid-row:3;">
-        <img src="warranty-doc.webp" loading="lazy" decoding="async" width="1200" height="870" alt="Warranty document" />
-      </div>
-      <!-- Stat 3 -->
-      <div class="problem-card" style="grid-column:3;grid-row:1;">
-        <div class="problem-stat">12+ hrs</div>
-        <p>average time homeowners spend managing repairs</p>
-      </div>
-      <p class="problem-source" style="grid-column:3;grid-row:2;">Allstate Protection Plans, 2022</p>
-      <div class="problem-photo-wrap" style="grid-column:3;grid-row:3;">
-        <img src="frustrated-homeowner.webp" loading="lazy" decoding="async" width="1024" height="1536" alt="Frustrated homeowner on phone" />
-      </div>
-    </div>
+    <p class="sec-label reveal">Your AI Home Assistant</p>
+    <h2 class="reveal">The intelligent OS for everything in your home</h2>
+    <p class="sec-desc reveal">Add your appliances once. Andy tracks warranties, flags maintenance, finds coverage, and helps you fix things fast — all from one place.</p>
+    <img src="app-screens-home.png" class="screens-img reveal" loading="lazy" alt="OwnWise app home dashboard and AI assistant screens" style="margin-top:52px;" />
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
 <section class="how-it-works">
   <div class="section-inner">
-    <p class="section-label reveal" style="text-align:center;">How it works</p>
-    <h2 class="reveal">Here's how OwnWise helps</h2>
-    <p class="how-sub reveal">From diagnosis to resolution — Andy handles the hard parts so you don't have to.</p>
-    <div class="hiw-cards">
-      <div class="hiw-card reveal">
-        <div class="hiw-num">1</div>
-        <h3>Tell Andy what's wrong</h3>
-        <p>Describe the problem in plain English. Andy asks follow-up questions to understand exactly what's happening.</p>
+    <div class="hiw-header">
+      <p class="sec-label reveal">How It Works</p>
+      <h2 class="light reveal">Four steps to never overpay again</h2>
+      <p class="sec-desc light reveal">OwnWise does the heavy lifting so you don't have to.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <h3>Add Your Stuff</h3>
+        <p>Scan a receipt, enter a model number, or let Andy auto-detect your appliances. Takes under 60 seconds.</p>
       </div>
-      <div class="hiw-card reveal">
-        <div class="hiw-num">2</div>
-        <h3>Andy checks your coverage</h3>
-        <p>Manufacturer warranty, home warranty, credit card protection — Andy scans every coverage option you might have.</p>
+      <div class="step-card reveal">
+        <div class="step-num">02</div>
+        <h3>Check Your Coverage</h3>
+        <p>Andy instantly searches manufacturer warranties, credit card protection, home warranties, and more.</p>
       </div>
-      <div class="hiw-card reveal">
-        <div class="hiw-num">3</div>
-        <h3>Get a fix plan instantly</h3>
-        <p>Andy tells you whether to file a claim, try a safe DIY fix, or find the right technician — ranked by cost.</p>
+      <div class="step-card reveal">
+        <div class="step-num">03</div>
+        <h3>File the Claim</h3>
+        <p>Already covered? Andy pre-fills and submits your warranty claim automatically — no hold music.</p>
       </div>
-      <div class="hiw-card reveal">
-        <div class="hiw-num">4</div>
-        <h3>Andy files for you</h3>
-        <p>Submit warranty claims and get repair appointments without sitting on hold. Andy does the paperwork.</p>
+      <div class="step-card reveal">
+        <div class="step-num">04</div>
+        <h3>Save Money &amp; Time</h3>
+        <p>We guide you through a DIY fix or book a certified tech — only when you truly need one.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MEET ANDY -->
-<section class="meet-andy">
+<!-- ANDY AI SCREENS -->
+<section class="andy-ai">
   <div class="section-inner">
-    <div class="andy-inner">
-      <div class="andy-text">
-        <p class="section-label reveal">Meet Andy</p>
-        <h2 class="reveal">Your AI home assistant, always on call</h2>
-        <p class="reveal">Andy is an AI built specifically for home ownership. He knows your appliances, tracks your warranties, and gives you the fastest, cheapest path to a fix — before you pay a single dollar out of pocket.</p>
-        <div class="andy-features reveal">
-          <div class="andy-feature">
-            <div class="andy-feature-icon">🔍</div>
-            <div class="andy-feature-text">
-              <h4>Instant diagnosis</h4>
-              <p>Describe the symptom — Andy identifies the cause and what it'll cost to fix.</p>
-            </div>
-          </div>
-          <div class="andy-feature">
-            <div class="andy-feature-icon">📋</div>
-            <div class="andy-feature-text">
-              <h4>Coverage lookup</h4>
-              <p>Andy scans every warranty you might have — including ones you forgot about.</p>
-            </div>
-          </div>
-          <div class="andy-feature">
-            <div class="andy-feature-icon">💰</div>
-            <div class="andy-feature-text">
-              <h4>Cost-ranked options</h4>
-              <p>Andy shows every fix path ranked from cheapest to most expensive, so you decide.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="andy-image reveal">
-        <img src="app-screens-home.png" loading="lazy" decoding="async" alt="OwnWise app home screen showing Andy AI assistant" />
-      </div>
-    </div>
+    <p class="sec-label reveal">Meet Andy</p>
+    <h2 class="reveal">Ask Andy anything about your home</h2>
+    <p class="sec-desc reveal">Andy checks your warranty status, files claims step-by-step, books service appointments, and answers every question — like having a home expert in your pocket.</p>
+    <img src="app-screens-2.png" class="screens-img reveal" loading="lazy" alt="OwnWise Andy AI coverage check, warranty status, and repair booking screens" style="margin-top:52px;" />
   </div>
 </section>
 
 <!-- COVERAGE TYPES -->
 <section class="coverage">
   <div class="section-inner">
-    <p class="section-label reveal">Coverage</p>
-    <h2 class="reveal">Coverage you probably didn't know you had</h2>
-    <p class="section-desc reveal">Most homeowners leave thousands in warranty benefits unclaimed every year. Andy finds it all.</p>
-    <div class="cov-grid" style="margin-top:52px;">
+    <div class="cov-header">
+      <p class="sec-label reveal">6 Coverage Types</p>
+      <h2 class="light reveal">Coverage you probably didn't know you had</h2>
+      <p class="sec-desc light reveal">Most homeowners are sitting on hundreds of dollars in unused protection. Andy finds all of it.</p>
+    </div>
+    <div class="cov-grid">
       <div class="cov-card reveal">
-        <span class="cov-icon">🏭</span>
+        <span class="cov-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3BAAF5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></span>
         <h3>Manufacturer Warranty</h3>
-        <p>Most appliances ship with 1–5 year coverage. Andy checks status instantly.</p>
+        <p>Most appliances include 1–5 year coverage. Andy checks status in seconds.</p>
       </div>
       <div class="cov-card reveal">
-        <span class="cov-icon">💳</span>
+        <span class="cov-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3BAAF5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>
         <h3>Credit Card Protection</h3>
         <p>Many cards double warranties or cover damage — benefits most people never use.</p>
       </div>
       <div class="cov-card reveal">
-        <span class="cov-icon">🏠</span>
+        <span class="cov-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3BAAF5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
         <h3>Home Warranty</h3>
-        <p>If you have a home warranty plan, Andy reads the fine print and files for you.</p>
+        <p>Have a home warranty plan? Andy reads the fine print and files the claim for you.</p>
       </div>
       <div class="cov-card reveal">
-        <span class="cov-icon">🛒</span>
+        <span class="cov-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3BAAF5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></span>
         <h3>Retailer Extended Warranty</h3>
-        <p>Best Buy, Costco, Amazon — retailer protection plans are often overlooked.</p>
+        <p>Best Buy, Costco, Amazon — retailer protection plans are constantly overlooked.</p>
       </div>
       <div class="cov-card reveal">
-        <span class="cov-icon">⚡</span>
+        <span class="cov-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3BAAF5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
         <h3>Utility Program Coverage</h3>
-        <p>Some utility companies offer free appliance repair programs. Andy knows them all.</p>
+        <p>Some utilities offer free appliance repair programs. Andy knows every one of them.</p>
       </div>
       <div class="cov-card reveal">
-        <span class="cov-icon">⚖️</span>
+        <span class="cov-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3BAAF5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
         <h3>Recall &amp; Class Action</h3>
-        <p>Active recalls and class action settlements may entitle you to a free repair or refund.</p>
+        <p>Active recalls may entitle you to a free fix or full refund. Andy checks automatically.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ANDY AI / CHAT SCREENS -->
-<section class="andy-ai">
+<!-- ANDY CHAT / CLAIM SCREENS -->
+<section class="andy-ai alt">
   <div class="section-inner">
-    <div class="andy-ai-inner">
-      <div class="andy-ai-image reveal">
-        <img src="app-screens-2.png" loading="lazy" decoding="async" alt="OwnWise app showing Andy AI diagnosing an appliance" />
-      </div>
-      <div class="andy-ai-text">
-        <p class="section-label reveal">Andy AI</p>
-        <h2 class="reveal">Just describe what's wrong — Andy takes it from there</h2>
-        <p class="reveal">No more Googling error codes or sitting on hold. Andy understands plain English, asks the right follow-up questions, and gives you a clear action plan in seconds.</p>
-        <div class="andy-chat-bubbles reveal">
-          <div class="bubble bubble-user">My dishwasher won't drain and it's making a humming noise</div>
-          <div class="bubble bubble-andy"><strong>Andy:</strong> Got it — that sounds like a clogged drain pump or filter. Your Bosch model may still be under warranty. Let me check... ✓ You have 14 months left on your manufacturer warranty. I can file a service request for you right now — want me to?</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DIY SECTION -->
-<section class="diy-section">
-  <div class="section-inner">
-    <h2 class="reveal">OwnWise helps you fix it yourself — faster and cheaper</h2>
-    <div class="diy-grid">
-      <div class="reveal">
-        <img src="Watch a DIY Video_v3.png" loading="lazy" decoding="async" alt="OwnWise helps you fix it yourself" />
-      </div>
-      <div class="reveal">
-        <ul class="diy-list">
-          <li>
-            <span class="diy-check">✓</span>
-            <p>OwnWise helps you find the content and parts to fix it fast.</p>
-          </li>
-          <li>
-            <span class="diy-check">✓</span>
-            <p>We won't recommend a DIY repair that's not safe.</p>
-          </li>
-          <li>
-            <span class="diy-check">✓</span>
-            <p>We won't invalidate your coverage.</p>
-          </li>
-          <li>
-            <span class="diy-check">✓</span>
-            <p>If you need a licensed technician, OwnWise recommends one.</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- KEY FEATURES / INTELLIGENT OS -->
-<section class="key-features">
-  <div class="section-inner">
-    <h2 class="reveal">The Intelligent OS for all of your stuff</h2>
-    <div class="reveal kf-desktop-img">
-      <img src="Key Features User_v2.png" loading="lazy" decoding="async" width="1200" height="739" alt="Key Features" />
-      <p class="kf-tagline">Know what broke, what's covered, and what your stuff is worth</p>
-    </div>
-    <div class="kf-mobile-stack">
-      <div class="kf-mobile-item">
-        <img src="image-2804.webp" loading="lazy" decoding="async" width="1200" height="2361" alt="Feature 1" style="width:85%;max-width:340px;display:block;margin:0 auto;" />
-      </div>
-      <div class="kf-mobile-item">
-        <img src="image-766.webp" loading="lazy" decoding="async" width="1200" height="2361" alt="Feature 2" style="width:85%;max-width:340px;display:block;margin:0 auto;" />
-      </div>
-      <div class="kf-mobile-item">
-        <img src="image-1581.webp" loading="lazy" decoding="async" width="1200" height="2361" alt="Feature 3" style="width:85%;max-width:340px;display:block;margin:0 auto;" />
-      </div>
-    </div>
+    <p class="sec-label reveal">AI-Powered Claims</p>
+    <h2 class="reveal">Andy files your claim while you make coffee</h2>
+    <p class="sec-desc reveal">Tell Andy what broke. Andy gathers the details, pre-fills your warranty form, and submits the claim — start to finish, in minutes.</p>
+    <img src="app-screens-3.png" class="screens-img reveal" loading="lazy" alt="OwnWise Andy AI chat filing a warranty claim automatically" style="margin-top:52px;" />
   </div>
 </section>
 
 <!-- FAQ -->
 <section class="faq">
   <div class="section-inner">
-    <p class="section-label reveal">FAQ</p>
-    <h2 class="reveal">Common questions</h2>
-    <div class="faq-list">
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">Is OwnWise free to use? <span class="faq-icon">+</span></button>
-        <div class="faq-a">
-          <p>Yes — getting started is completely free. You can add products, check coverage, and get fix recommendations at no cost. We may offer premium features like automated claim filing later, but early access users get priority pricing.</p>
-        </div>
+    <div class="faq-wrap">
+      <div class="faq-left reveal">
+        <p class="sec-label">FAQ</p>
+        <h2>Common questions</h2>
+        <p class="sec-desc">Everything you need to know about OwnWise before you join the waitlist.</p>
       </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">What types of coverage does OwnWise check? <span class="faq-icon">+</span></button>
-        <div class="faq-a">
-          <p>We check manufacturer warranties, extended protection plans, home warranty policies, credit card purchase protection and extended warranty benefits, and homeowner's insurance where applicable.</p>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">Is OwnWise free to use? <span class="faq-icon">+</span></button>
+          <div class="faq-a">
+            <p>Yes — getting started is completely free. Add products, check coverage, and get fix recommendations at no cost. Early access users will receive 1 year free and first access to premium features like automated claim filing.</p>
+          </div>
         </div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">What appliances and products are supported? <span class="faq-icon">+</span></button>
-        <div class="faq-a">
-          <p>OwnWise supports major home appliances (refrigerators, dishwashers, washers/dryers, ovens), HVAC systems, electronics, and more — across all major brands including Whirlpool, LG, Samsung, GE, Bosch, and 50+ others.</p>
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">What types of coverage does OwnWise check? <span class="faq-icon">+</span></button>
+          <div class="faq-a">
+            <p>We check manufacturer warranties, extended protection plans, home warranty policies, credit card purchase protection, retailer warranties, utility programs, and active recalls — all automatically.</p>
+          </div>
         </div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">How is OwnWise different from just calling a repair company? <span class="faq-icon">+</span></button>
-        <div class="faq-a">
-          <p>A repair company charges $100–$300 just to show up, then more for parts and labor. OwnWise first checks if your repair is already covered — so you only pay out of pocket when you truly have to. Think of us as the smarter first step before calling anyone.</p>
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">What appliances and brands are supported? <span class="faq-icon">+</span></button>
+          <div class="faq-a">
+            <p>OwnWise supports major home appliances (refrigerators, dishwashers, washers/dryers, ovens), HVAC systems, electronics, and more — across 50+ brands including Whirlpool, LG, Samsung, GE, and Bosch.</p>
+          </div>
         </div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">When is OwnWise launching? <span class="faq-icon">+</span></button>
-        <div class="faq-a">
-          <p>We're targeting Spring 2026. Early access users will be first in line and will receive special pricing. Join the waitlist and we'll keep you posted.</p>
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">How is this different from just calling a repair company? <span class="faq-icon">+</span></button>
+          <div class="faq-a">
+            <p>A repair company charges $100–$300 just to show up. OwnWise checks your coverage first — so you only pay out of pocket when you truly have to. We're the smarter step before you call anyone.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">When does OwnWise launch? <span class="faq-icon">+</span></button>
+          <div class="faq-a">
+            <p>We're targeting Spring 2026. Waitlist members are first in line and will receive special early-access pricing. Sign up now and we'll keep you updated.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA / WAITLIST -->
-<section class="waitlist" id="waitlist">
-  <div class="section-inner" style="max-width:600px;">
-    <p class="section-label reveal">Early Access</p>
+<!-- FINAL CTA -->
+<section class="final-cta" id="waitlist">
+  <div class="inner">
+    <p class="sec-label reveal">Early Access</p>
     <h2 class="reveal">Stop overpaying for repairs.</h2>
-    <p class="waitlist-sub reveal">Join the waitlist. Andy launches Spring 2026.</p>
-    <div class="cta-form-wrap">
-      <form action="https://formspree.io/f/xwvrrylo" method="POST" id="ctaSignup" onsubmit="return handleFormSubmit(event, 'cta')">
-        <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required style="width:100%;padding:15px 18px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:#fff;font-family:'Poppins',sans-serif;font-size:0.95rem;outline:none;margin-bottom:10px;display:block;">
-        <input type="hidden" name="_subject" value="OwnWise Early Access - CTA Signup">
-        <input type="hidden" name="source" value="cta">
+    <p class="sec-desc reveal">Join thousands of homeowners on the OwnWise waitlist. Get 1 year free when we launch.</p>
+    <form class="cta-form reveal" onsubmit="return handleSubmit(event, 'cta')">
+      <div class="cta-input-row">
+        <input type="email" name="email" placeholder="Enter your email address" autocomplete="email" required />
         <button type="submit" class="btn-primary">Get 1 Year Free →</button>
-      </form>
-    </div>
+      </div>
+      <p class="cta-fine">Free to join. No spam, ever. Unsubscribe anytime.</p>
+    </form>
     <div class="cta-success" id="ctaSuccess">✓ You're on the list — we'll be in touch soon!</div>
-    <p class="cta-fine">Free to join. No spam, ever.</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 OwnWise · <a href="mailto:hello@getownwise.com">hello@getownwise.com</a> · <a href="https://getownwise.com">getownwise.com</a></p>
-  <p style="margin-top:6px;">We don't sell ads or your data.</p>
+  <div class="footer-row">
+    <span>© 2026 OwnWise</span>
+    <a href="mailto:hello@getownwise.com">hello@getownwise.com</a>
+    <a href="https://getownwise.com">getownwise.com</a>
+    <span>We don't sell ads or your data.</span>
+  </div>
 </footer>
 
 <script>
-  // ── Scroll reveal ──
-  const reveals = document.querySelectorAll('.reveal');
+  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
+    entries.forEach(e => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        const delay = parseInt(e.target.dataset.delay || '0');
+        setTimeout(() => e.target.classList.add('visible'), delay);
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
-  // ── Formspree submission ──
-  async function submitToFormspree(email, source) {
-    const res = await fetch('https://formspree.io/f/xwvrrylo', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email, source, _subject: 'OwnWise Early Access - ' + source })
-    });
-    if (!res.ok) throw new Error('Formspree responded with ' + res.status);
-  }
+  document.querySelectorAll('.reveal').forEach(el => {
+    const siblings = Array.from(el.parentElement.querySelectorAll(':scope > .reveal'));
+    const idx = siblings.indexOf(el);
+    if (idx > 0) el.dataset.delay = idx * 80;
+    observer.observe(el);
+  });
 
-  function showSignupError(container, message) {
-    let err = container.querySelector('.signup-error');
-    if (!err) {
-      err = document.createElement('p');
-      err.className = 'signup-error';
-      err.style.cssText = 'color:#e05;margin:8px 0 0;font-size:0.85rem;';
-      container.appendChild(err);
-    }
-    err.textContent = message;
-  }
-
-  async function handleFormSubmit(event, source) {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value.trim();
-
-    if (!email || !email.includes('@')) {
-      form.email.focus();
-      form.email.style.borderColor = 'rgba(255,100,100,0.7)';
-      setTimeout(() => form.email.style.borderColor = '', 1500);
-      return false;
-    }
-
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn ? btn.textContent : '';
-    if (btn) { btn.textContent = 'Submitting…'; btn.disabled = true; }
-
-    try {
-      await submitToFormspree(email, source);
-
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'email_signup', { event_category: 'conversion', event_label: source });
-      }
-
-      if (source === 'hero') {
-        form.style.display = 'none';
-        document.getElementById('heroSuccess').style.display = 'block';
-      } else if (source === 'cta') {
-        document.getElementById('ctaSignup').style.display = 'none';
-        document.getElementById('ctaSuccess').style.display = 'block';
-      }
-    } catch (err) {
-      console.warn('Formspree error:', err);
-      if (btn) { btn.textContent = originalText; btn.disabled = false; }
-      showSignupError(form, 'Something went wrong — please try again.');
-    }
-
-    return false;
-  }
-
-  // ── FAQ accordion ──
+  // FAQ toggle
   function toggleFaq(btn) {
-    const item = btn.parentElement;
-    const answer = item.querySelector('.faq-a');
+    const item = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => {
+    document.querySelectorAll('.faq-item.open').forEach(i => {
       i.classList.remove('open');
       i.querySelector('.faq-a').classList.remove('open');
     });
     if (!isOpen) {
       item.classList.add('open');
-      answer.classList.add('open');
+      item.querySelector('.faq-a').classList.add('open');
     }
   }
 
-  // ── Enter key support ──
-  document.querySelectorAll('input[type="email"]').forEach(input => {
-    input.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        const form = e.target.closest('form');
-        if (form) form.requestSubmit();
-      }
-    });
-  });
-</script>
+  // Email form submission
+  async function handleSubmit(event, source) {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value.trim();
+    const successEl = document.getElementById(source === 'hero' ? 'heroSuccess' : 'ctaSuccess');
+    const btn = form.querySelector('button[type="submit"]');
 
+    if (!email || !email.includes('@')) {
+      form.email.style.borderColor = 'rgba(255,80,80,0.7)';
+      form.email.focus();
+      setTimeout(() => form.email.style.borderColor = '', 1600);
+      return false;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    try {
+      const res = await fetch('https://formspree.io/f/xwvrrylo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email, source, _subject: 'OwnWise Early Access — ' + source })
+      });
+      if (!res.ok) throw new Error('error');
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'email_signup', { event_category: 'conversion', event_label: source });
+      }
+      form.style.display = 'none';
+      successEl.style.display = 'block';
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Get 1 Year Free →';
+      let errMsg = form.querySelector('.form-err');
+      if (!errMsg) {
+        errMsg = document.createElement('p');
+        errMsg.className = 'form-err';
+        errMsg.style.cssText = 'color:rgba(255,120,120,0.9);font-size:0.82rem;margin-top:6px;';
+        form.appendChild(errMsg);
+      }
+      errMsg.textContent = 'Something went wrong. Please try again.';
+    }
+    return false;
+  }
+</script>
 </body>
 </html>
