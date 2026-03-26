@@ -374,6 +374,39 @@
       border-radius: 16px;
     }
 
+    /* ── DESKTOP / MOBILE SWITCHING ── */
+    .mobile-only { display: none; }
+    @media (max-width: 860px) {
+      .desktop-only { display: none !important; }
+      .mobile-only { display: block; }
+    }
+
+    /* Hero mobile: two phones side by side */
+    .hero-mobile-imgs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+    }
+    .hero-mobile-imgs img {
+      width: calc(50% - 6px);
+      max-width: 200px;
+      border-radius: 12px;
+    }
+
+    /* Section mobile: 2x2 grid of phone screens */
+    .screens-mobile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .screens-mobile-grid img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
     /* ── HOW IT WORKS ── */
     .how-it-works { background: var(--navy); }
     .how-it-works .sec-label { color: var(--accent-lt); }
@@ -615,7 +648,11 @@
       </div>
     </div>
     <div class="hero-right">
-      <img src="hero-phone-primary.png" loading="eager" decoding="async" alt="OwnWise app — Broken Happens. We handle the rest." />
+      <img src="hero-phone-primary.png" loading="eager" decoding="async" alt="OwnWise app — Broken Happens. We handle the rest." class="desktop-only" />
+      <div class="hero-mobile-imgs mobile-only">
+        <img src="hero-1.png" loading="eager" decoding="async" alt="OwnWise app — Diagnose device" />
+        <img src="hero-2.png" loading="eager" decoding="async" alt="OwnWise app — Coverage options" />
+      </div>
     </div>
   </div>
 </section>
@@ -659,7 +696,13 @@
     <p class="sec-label reveal">Your AI Home Assistant</p>
     <h2 class="reveal">The intelligent OS for everything in your home</h2>
     <p class="sec-desc reveal">Add your appliances once. Andy tracks warranties, flags maintenance, finds coverage, and helps you fix things fast — all from one place.</p>
-    <img src="app-screens-home.png" class="screens-img reveal" loading="lazy" alt="OwnWise app home dashboard and AI assistant screens" style="margin-top:52px;" />
+    <img src="app-screens-home.png" class="screens-img reveal desktop-only" loading="lazy" alt="OwnWise app home dashboard and AI assistant screens" style="margin-top:52px;" />
+    <div class="screens-mobile-grid mobile-only reveal">
+      <img src="block-2-1.png" loading="lazy" alt="OwnWise home dashboard" />
+      <img src="block-2-2.png" loading="lazy" alt="OwnWise maintenance due" />
+      <img src="block-2-3.png" loading="lazy" alt="OwnWise app navigation" />
+      <img src="block-2-4.png" loading="lazy" alt="OwnWise scan receipt" />
+    </div>
   </div>
 </section>
 
@@ -702,7 +745,13 @@
     <p class="sec-label reveal">Meet Andy</p>
     <h2 class="reveal">Ask Andy anything about your home</h2>
     <p class="sec-desc reveal">Andy checks your warranty status, files claims step-by-step, books service appointments, and answers every question — like having a home expert in your pocket.</p>
-    <img src="app-screens-2.png" class="screens-img reveal" loading="lazy" alt="OwnWise Andy AI coverage check, warranty status, and repair booking screens" style="margin-top:52px;" />
+    <img src="app-screens-2.png" class="screens-img reveal desktop-only" loading="lazy" alt="OwnWise Andy AI coverage check, warranty status, and repair booking screens" style="margin-top:52px;" />
+    <div class="screens-mobile-grid mobile-only reveal">
+      <img src="block-3-1.png" loading="lazy" alt="OwnWise Andy chat" />
+      <img src="block-3-2.png" loading="lazy" alt="OwnWise coverage check" />
+      <img src="block-3-3.png" loading="lazy" alt="OwnWise likely covered" />
+      <img src="block-3-4.png" loading="lazy" alt="OwnWise repairs" />
+    </div>
   </div>
 </section>
 
@@ -755,7 +804,13 @@
     <p class="sec-label reveal">AI-Powered Claims</p>
     <h2 class="reveal">Andy files your claim while you make coffee</h2>
     <p class="sec-desc reveal">Tell Andy what broke. Andy gathers the details, pre-fills your warranty form, and submits the claim — start to finish, in minutes.</p>
-    <img src="app-screens-3.png" class="screens-img reveal" loading="lazy" alt="OwnWise Andy AI chat filing a warranty claim automatically" style="margin-top:52px;" />
+    <img src="app-screens-3.png" class="screens-img reveal desktop-only" loading="lazy" alt="OwnWise Andy AI chat filing a warranty claim automatically" style="margin-top:52px;" />
+    <div class="screens-mobile-grid mobile-only reveal">
+      <img src="block-4-1.png" loading="lazy" alt="OwnWise Andy claim intro" />
+      <img src="block-4-2.png" loading="lazy" alt="OwnWise Andy dishwasher leaking" />
+      <img src="block-4-3.png" loading="lazy" alt="OwnWise Andy claim summary" />
+      <img src="block-4-4.png" loading="lazy" alt="OwnWise pre-filled claim form" />
+    </div>
   </div>
 </section>
 
