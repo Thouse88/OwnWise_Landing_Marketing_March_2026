@@ -244,7 +244,9 @@
       .hero-sub { margin: 0 auto 36px; }
       .hero-form { max-width: 100%; }
       .hero-tag { align-self: center; }
+      .hero-tag .dot { display: none; }
       .hero-note { justify-content: center; }
+      .hero-h1-mobile { margin: 0 0 24px; text-align: center; width: 100%; }
     }
     @media (max-width: 480px) {
       h1 { font-size: clamp(2rem, 7.5vw, 2.4rem); }
@@ -395,16 +397,22 @@
       border-radius: 12px;
     }
 
-    /* Section mobile: 2x2 grid of phone screens */
+    /* Section mobile: horizontal scroll row of phone screens */
     .screens-mobile-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      overflow-x: auto;
       gap: 12px;
       margin-top: 32px;
+      padding-bottom: 12px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
+    .screens-mobile-grid::-webkit-scrollbar { display: none; }
     .screens-mobile-grid img {
-      width: 100%;
+      flex: 0 0 72%;
+      max-width: 260px;
       border-radius: 12px;
+      scroll-snap-align: start;
     }
 
     /* ── HOW IT WORKS ── */
@@ -631,7 +639,7 @@
       <div class="hero-tag">
         <span class="dot"></span> Launching Spring 2026
       </div>
-      <h1>Stop paying $300 for a repair visit. <em>Check OwnWise first.</em></h1>
+      <h1 class="desktop-only">Stop paying $300 for a repair visit. <em>Check OwnWise first.</em></h1>
       <p class="hero-sub">OwnWise uses AI to find warranties you already own, file claims automatically, and fix your home for less — before you ever call a technician.</p>
       <div class="hero-form-wrap">
         <form class="hero-form" onsubmit="return handleSubmit(event, 'hero')">
@@ -649,6 +657,7 @@
     </div>
     <div class="hero-right">
       <img src="hero-phone-primary.png" loading="eager" decoding="async" alt="OwnWise app — Broken Happens. We handle the rest." class="desktop-only" />
+      <h1 class="mobile-only hero-h1-mobile">Stop paying $300 for a repair visit. <em>Check OwnWise first.</em></h1>
       <div class="hero-mobile-imgs mobile-only">
         <img src="hero-1.png" loading="eager" decoding="async" alt="OwnWise app — Diagnose device" />
         <img src="hero-2.png" loading="eager" decoding="async" alt="OwnWise app — Coverage options" />
