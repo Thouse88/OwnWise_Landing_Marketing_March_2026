@@ -82,7 +82,9 @@
       text-decoration: none;
     }
     .nav-logo span { color: var(--accent); }
-    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-link { font-size: 0.85rem; font-weight: 600; color: var(--navy); text-decoration: none; opacity: 0.7; transition: opacity 0.2s; }
+    .nav-link:hover { opacity: 1; }
     .badge-pill {
       font-size: 0.72rem;
       font-weight: 600;
@@ -274,9 +276,9 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 8px;
-      text-align: center;
+      text-align: left;
     }
-    .stat-block { padding: 12px 16px; }
+    .stat-block { padding: 12px 16px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
     .stat-block + .stat-block { border-left: 1px solid rgba(255,255,255,0.08); }
     .stat-num {
       font-family: 'Poppins', sans-serif;
@@ -291,7 +293,14 @@
       color: rgba(255,255,255,0.52);
       line-height: 1.5;
       max-width: 150px;
-      margin: 0 auto;
+      margin: 0;
+    }
+    .stat-source {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.28);
+      margin-top: 6px;
+      font-style: italic;
+      text-align: left;
     }
     @media (max-width: 700px) {
       .stats-bar { padding: 36px 20px; }
@@ -309,25 +318,35 @@
       border-bottom: 1px solid var(--border);
       padding: 18px 48px;
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
+      overflow: hidden;
     }
-    .brands-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      white-space: nowrap;
+    .brands-ticker-desktop {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+    .brands-label { display: none; }
+    .brands-ticker {
+      display: flex;
+      width: max-content;
+      animation: none;
+    }
+    @media (max-width: 860px) {
+      .brands-bar { padding: 14px 0; overflow: hidden; display: block; }
+      .brands-ticker {
+        animation: ticker 22s linear infinite;
+      }
+      .brands-ticker:hover { animation-play-state: paused; }
+      .brands-list { flex-wrap: nowrap; }
     }
     .brands-list {
       display: flex;
       align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-      justify-content: center;
+      gap: 8px;
+      padding: 0 8px;
+      flex-shrink: 0;
     }
     .brands-list span {
       font-size: 0.82rem;
@@ -337,9 +356,28 @@
       border: 1.5px solid rgba(26,143,227,0.22);
       border-radius: 20px;
       background: rgba(26,143,227,0.06);
+      white-space: nowrap;
     }
-    .brands-more { font-size: 0.8rem; font-weight: 500; color: var(--muted); }
-    @media (max-width: 480px) { .brands-bar { padding: 14px 20px; gap: 8px; } }
+    .brands-static {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+    .brands-static span {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #1260B0;
+      padding: 4px 12px;
+      border: 1.5px solid rgba(26,143,227,0.22);
+      border-radius: 20px;
+      background: rgba(26,143,227,0.06);
+      white-space: nowrap;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
     /* ── HERO TESTIMONIAL ── */
     .hero-testimonial {
@@ -349,20 +387,26 @@
       text-align: center;
     }
     .hero-testimonial blockquote {
-      max-width: 680px;
+      max-width: 1000px;
       margin: 0 auto;
-      font-size: 1rem;
+      font-size: clamp(0.75rem, 1.4vw, 1rem);
       color: #3a4b5c;
       line-height: 1.65;
       font-style: italic;
       quotes: "\201C" "\201D";
+      white-space: nowrap;
     }
-    .hero-testimonial blockquote::before { content: open-quote; }
-    .hero-testimonial blockquote::after { content: close-quote; }
+    .hero-testimonial blockquote::before { content: none; }
+    .hero-testimonial blockquote::after { content: none; }
     .hero-testimonial cite { font-style: normal; font-size: 0.82rem; font-weight: 600; color: var(--muted); display: block; margin-top: 8px; }
+    .hero-testimonial-inner { display: flex; align-items: center; justify-content: center; gap: 16px; max-width: 680px; margin: 0 auto; }
+    .hero-testimonial-thumb { display: none; }
     @media (max-width: 860px) {
-      .hero-testimonial { padding: 24px 24px; }
-      .hero-testimonial blockquote { font-size: 0.92rem; }
+      .hero-testimonial { padding: 24px 20px; }
+      .hero-testimonial-inner { align-items: flex-start; gap: 14px; }
+      .hero-testimonial-thumb { display: block; width: 140px; height: 140px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+      .hero-testimonial blockquote { font-size: 0.88rem; margin: 0; text-align: left; white-space: normal; }
+      .hero-testimonial cite { text-align: left; }
     }
 
     /* ── TESTIMONIAL CAROUSEL ── */
@@ -738,6 +782,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav>
   <div class="nav-logo">Own<span>Wise</span></div>
   <div class="nav-right">
+    <a href="about.html" class="nav-link">About</a>
     <span class="badge-pill">Spring 2026</span>
     <a href="#waitlist" class="nav-cta">Get Early Access</a>
   </div>
@@ -779,39 +824,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- HERO TESTIMONIAL -->
 <div class="hero-testimonial">
-  <blockquote>My Bosch dishwasher broke and I paid $314 for a repair — then realized I completely forgot I had a 5-year warranty. OwnWise would've saved me that money.<cite> — Catherine, Texas</cite></blockquote>
+  <div class="hero-testimonial-inner">
+    <img src="Bosch dishwasher hero testimonial thumb.jpg" alt="Bosch dishwasher" class="hero-testimonial-thumb" loading="lazy" />
+    <blockquote>"Dishwasher broke. I paid $314 for repair — realized I forgot about my 5-year Home Depot warranty. OwnWise would've saved me $314."<cite> — Catherine, Texas</cite></blockquote>
+  </div>
 </div>
 
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat-block reveal">
-      <div class="stat-num">$200–300</div>
+      <div class="stat-num" style="white-space:nowrap; font-size: clamp(1.4rem, 2.8vw, 2.8rem);">$200–$300</div>
       <div class="stat-label">Average cost of a single home repair visit</div>
+      <div class="stat-source">Thumbtack, 2025</div>
     </div>
     <div class="stat-block reveal">
-      <div class="stat-num">Only 4%</div>
-      <div class="stat-label">of owners with a broken appliance ever file a warranty claim</div>
+      <div class="stat-num">1 in 5</div>
+      <div class="stat-label">consumers avoid filing claims due to frustrating processes</div>
+      <div class="stat-source">Insurity, 2025</div>
     </div>
     <div class="stat-block reveal">
       <div class="stat-num">12+ hrs</div>
       <div class="stat-label">Average time homeowners lose managing repairs each year</div>
+      <div class="stat-source">Allstate, 2022 Survey</div>
     </div>
     <div class="stat-block reveal">
-      <div class="stat-num">50+</div>
-      <div class="stat-label">Major appliance &amp; HVAC brands fully supported</div>
+      <div class="stat-num">150,000+</div>
+      <div class="stat-label">products supported across major appliance brands</div>
     </div>
   </div>
 </div>
 
 <!-- BRANDS BAR -->
 <div class="brands-bar">
-  <span class="brands-label">Supports</span>
-  <div class="brands-list">
+  <!-- Desktop: static centered wrap -->
+  <div class="brands-static desktop-only">
     <span>Whirlpool</span><span>LG</span><span>Samsung</span><span>GE</span>
     <span>Bosch</span><span>Maytag</span><span>Electrolux</span><span>Frigidaire</span>
     <span>Carrier</span><span>Trane</span><span>KitchenAid</span><span>Miele</span>
-    <span class="brands-more">+ more</span>
+  </div>
+  <!-- Mobile: auto-scrolling ticker -->
+  <div class="brands-ticker mobile-only">
+    <div class="brands-list">
+      <span>Whirlpool</span><span>LG</span><span>Samsung</span><span>GE</span>
+      <span>Bosch</span><span>Maytag</span><span>Electrolux</span><span>Frigidaire</span>
+      <span>Carrier</span><span>Trane</span><span>KitchenAid</span><span>Miele</span>
+    </div>
+    <div class="brands-list" aria-hidden="true">
+      <span>Whirlpool</span><span>LG</span><span>Samsung</span><span>GE</span>
+      <span>Bosch</span><span>Maytag</span><span>Electrolux</span><span>Frigidaire</span>
+      <span>Carrier</span><span>Trane</span><span>KitchenAid</span><span>Miele</span>
+    </div>
   </div>
 </div>
 

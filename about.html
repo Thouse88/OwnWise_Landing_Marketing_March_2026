@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — OwnWise</title>
+  <meta name="description" content="We're a team of former Apple product and engineering managers on a mission to save everyday people time and money on home repairs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0B1A35;
+      --navy-mid:   #112241;
+      --navy-light: #1A3260;
+      --accent:     #1A8FE3;
+      --accent-lt:  #3BAAF5;
+      --white:      #FFFFFF;
+      --off-white:  #F4F7FB;
+      --muted:      #7A8899;
+      --border:     #E0E6EF;
+      --text:       #1A2B3C;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 62px;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .nav-link:hover { opacity: 1; }
+    .nav-link.active { opacity: 1; color: var(--accent); }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 9px 22px;
+      border-radius: 7px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 2px 12px rgba(26,143,227,0.4);
+    }
+    .nav-cta:hover { background: var(--accent-lt); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(26,143,227,0.5); }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-link { display: none; }
+    }
+
+    /* ── PAGE WRAPPER ── */
+    .page { padding-top: 62px; }
+
+    /* ── HERO BANNER ── */
+    .about-hero {
+      background: var(--navy);
+      padding: 80px 48px 72px;
+      text-align: center;
+    }
+    .about-hero h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+    .about-hero h1 em { font-style: normal; color: var(--accent-lt); }
+    .about-hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    @media (max-width: 640px) {
+      .about-hero { padding: 60px 24px 52px; }
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 72px 48px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .section + .section { padding-top: 0; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .section h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .section p {
+      font-size: 1.02rem;
+      color: #3a4b5c;
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .section p:last-child { margin-bottom: 0; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ── WHO WE ARE ── */
+    .team-bar {
+      background: var(--off-white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 48px;
+    }
+    .team-bar-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ── COLLAGE ── */
+    .collage-section {
+      background: var(--navy-mid);
+      padding: 64px 48px;
+    }
+    .collage-section h2 {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 800;
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 36px;
+      letter-spacing: -0.02em;
+    }
+    .collage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .collage-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .collage-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: rgba(255,255,255,0.06);
+      border: 2px dashed rgba(255,255,255,0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    @media (max-width: 640px) {
+      .collage-grid { grid-template-columns: repeat(2, 1fr); }
+      .collage-section { padding: 48px 20px; }
+    }
+
+    /* ── MISSION CALLOUT ── */
+    .mission-callout {
+      background: rgba(26,143,227,0.07);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .mission-callout p {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+/* ── VIDEO EMBED ── */
+    .video-wrap {
+      margin-top: 32px;
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--off-white);
+      border-top: 1px solid var(--border);
+      padding: 56px 48px;
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .contact-section p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    .contact-email {
+      display: inline-block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 2px solid rgba(26,143,227,0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .contact-email:hover { border-color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.78rem;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 640px) {
+      .section { padding: 48px 24px; }
+      .team-bar { padding: 40px 24px; }
+      .contact-section { padding: 48px 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <a href="index.html" class="nav-logo">Own<span>Wise</span></a>
+    <div class="nav-right">
+      <a href="about.html" class="nav-link active">About</a>
+      <a href="index.html#waitlist" class="nav-cta">Get Early Access</a>
+    </div>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <div class="about-hero">
+    <h1>Built by people who believe <em>the system should work for you.</em></h1>
+    <p>We're on a mission to save everyday families and small businesses time and money — one repair at a time.</p>
+  </div>
+
+  <!-- WHO WE ARE -->
+  <div class="section">
+    <p class="section-label">Who We Are</p>
+    <h2>Former Apple engineers. Passionate problem solvers.</h2>
+    <p>We are a team of former Apple product and engineering managers who are passionate about saving everyday folks money and time on repairs and maintenance.</p>
+
+    <div class="mission-callout">
+      <p>Repair costs have exceeded inflation by 3x from 2014 to 2024 — and the process of getting reimbursed for money you're owed is fraught with gotchas, UX hurdles, and customer service run-arounds that waste time people can't afford.</p>
+    </div>
+    <img src="fredgraph.png" alt="Consumer Price Index for Repair of Household Items — FRED, St. Louis Fed" loading="lazy" style="width:100%; border-radius:12px; margin-top:28px; box-shadow:0 4px 20px rgba(0,0,0,0.1); border:1px solid var(--border);" />
+
+  </div>
+
+  <hr class="divider" />
+
+  <!-- WHY IT MATTERS -->
+  <div class="section">
+    <p class="section-label">Why It Matters</p>
+    <h2>Real people. Real stakes.</h2>
+    <p>If you're a single mom making $75,000 a year with two kids, you don't have time to troubleshoot a broken water heater yourself — nor can you afford to wait to bathe your kids. If English is your second language, finding a compressor part online and installing it in a broken dishwasher can feel impossible. If you're a small business owner, a repair delay can be the difference between a profitable quarter and a loss.</p>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/-VzTIuSHUUw" title="OwnWise — Real people. Real stakes." allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ENVIRONMENT -->
+  <div class="section">
+    <p class="section-label">Beyond Savings</p>
+    <h2>Good for your wallet. Good for the planet.</h2>
+    <p>Our landfills are littered with consumer electronics, appliances, and waste that — with better maintenance and preventative repairs — could last years longer. OwnWise helps people fix and maintain what they already own, reducing waste and protecting the environment alongside saving money.</p>
+    <img src="how-do-i-recycle-whitegoods_-.jpg" alt="How do I recycle white goods" loading="lazy" style="width:100%; border-radius:12px; margin-top:28px; box-shadow:0 4px 20px rgba(0,0,0,0.1);" />
+  </div>
+
+
+  <!-- CONTACT -->
+  <div class="contact-section">
+    <h2>Get in touch</h2>
+    <p>Interested in learning more, partnering with us, or just want to say hi?</p>
+    <a href="mailto:ownwisefounder@gmail.com" class="contact-email">ownwisefounder@gmail.com</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 OwnWise. All rights reserved. &nbsp;·&nbsp; <a href="index.html">Home</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
