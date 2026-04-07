@@ -341,6 +341,103 @@
     .brands-more { font-size: 0.8rem; font-weight: 500; color: var(--muted); }
     @media (max-width: 480px) { .brands-bar { padding: 14px 20px; gap: 8px; } }
 
+    /* ── HERO TESTIMONIAL ── */
+    .hero-testimonial {
+      background: #f0f7ff;
+      border-top: 1px solid rgba(26,143,227,0.12);
+      padding: 28px 48px;
+      text-align: center;
+    }
+    .hero-testimonial blockquote {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 1rem;
+      color: #3a4b5c;
+      line-height: 1.65;
+      font-style: italic;
+      quotes: "\201C" "\201D";
+    }
+    .hero-testimonial blockquote::before { content: open-quote; }
+    .hero-testimonial blockquote::after { content: close-quote; }
+    .hero-testimonial cite { font-style: normal; font-size: 0.82rem; font-weight: 600; color: var(--muted); display: block; margin-top: 8px; }
+    @media (max-width: 860px) {
+      .hero-testimonial { padding: 24px 24px; }
+      .hero-testimonial blockquote { font-size: 0.92rem; }
+    }
+
+    /* ── TESTIMONIAL CAROUSEL ── */
+    .testimonial-carousel {
+      background: #fff;
+      padding: 56px 48px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .testimonial-carousel-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+    .testimonial-slide {
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .testimonial-slide img {
+      width: 100%;
+      max-width: 420px;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .testimonial-slide blockquote {
+      font-size: 0.98rem;
+      color: #3a4b5c;
+      line-height: 1.7;
+      font-style: italic;
+      text-align: center;
+      max-width: 600px;
+      quotes: "\201C" "\201D";
+    }
+    .testimonial-slide blockquote::before { content: open-quote; }
+    .testimonial-slide blockquote::after { content: close-quote; }
+    .testimonial-slide cite {
+      display: block;
+      margin-top: 10px;
+      font-style: normal;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .testimonial-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .testimonial-dots button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(26,143,227,0.25);
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s;
+    }
+    .testimonial-dots button.active { background: var(--accent); }
+    @media (max-width: 860px) {
+      .testimonial-carousel { padding: 40px 24px; }
+      .testimonial-slide img { max-height: 220px; }
+      .testimonial-slide blockquote { font-size: 0.9rem; }
+    }
+
     /* ── SHARED SECTION STYLES ── */
     section { padding: 88px 48px; }
     .section-inner { max-width: 1080px; margin: 0 auto; }
@@ -680,6 +777,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- HERO TESTIMONIAL -->
+<div class="hero-testimonial">
+  <blockquote>My Bosch dishwasher broke and I paid $314 for a repair — then realized I completely forgot I had a 5-year warranty. OwnWise would've saved me that money.<cite> — Catherine, Texas</cite></blockquote>
+</div>
+
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-inner">
@@ -710,6 +812,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span>Bosch</span><span>Maytag</span><span>Electrolux</span><span>Frigidaire</span>
     <span>Carrier</span><span>Trane</span><span>KitchenAid</span><span>Miele</span>
     <span class="brands-more">+ more</span>
+  </div>
+</div>
+
+<!-- TESTIMONIAL CAROUSEL -->
+<div class="testimonial-carousel">
+  <div class="testimonial-carousel-inner">
+    <div class="testimonial-track" id="testimonialTrack">
+      <div class="testimonial-slide">
+        <img src="testimonial-water-heater.png" alt="Water heater in attic" loading="lazy" />
+        <blockquote>
+          My new water heater broke — and the manufacturer wouldn't cover labor. I had no idea until it was too late. OwnWise would've caught that upfront and given me options to fight back.
+          <cite>— Ben, Boston</cite>
+        </blockquote>
+      </div>
+      <div class="testimonial-slide">
+        <img src="testimonial-washer-drum.jpg" alt="Inside of washing machine drum" loading="lazy" />
+        <blockquote>
+          I manage 13 rental properties across Dallas and repairs are constant. OwnWise would help me track everything, know what's covered, and make faster decisions.
+          <cite>— Jane, Austin</cite>
+        </blockquote>
+      </div>
+      <div class="testimonial-slide">
+        <img src="whirlpool-6th-sense-filter-clog-v0-akzagoe96bkg1 copy 2.png" alt="Whirlpool 6th Sense washer filter clog error" loading="lazy" />
+        <blockquote>
+          I kept getting an error code on my dishwasher and spent weeks checking pumps, drains, and water pressure. OwnWise found a pocket under the drum I'd missed. Fixed it myself. Saved $200–$300.
+          <cite>— Jennifer, Michigan</cite>
+        </blockquote>
+      </div>
+    </div>
+    <div class="testimonial-dots">
+      <button class="active" onclick="goToSlide(0)" aria-label="Testimonial 1"></button>
+      <button onclick="goToSlide(1)" aria-label="Testimonial 2"></button>
+      <button onclick="goToSlide(2)" aria-label="Testimonial 3"></button>
+    </div>
   </div>
 </div>
 
@@ -940,6 +1076,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       item.classList.add('open');
       item.querySelector('.faq-a').classList.add('open');
     }
+  }
+
+  // Testimonial carousel
+  let currentSlide = 0;
+  function goToSlide(index) {
+    currentSlide = index;
+    document.getElementById('testimonialTrack').style.transform = `translateX(-${index * 100}%)`;
+    document.querySelectorAll('.testimonial-dots button').forEach((btn, i) => {
+      btn.classList.toggle('active', i === index);
+    });
   }
 
   // Email form submission
