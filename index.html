@@ -526,6 +526,17 @@
       margin: 0 auto;
       border-radius: 16px;
     }
+    .screens-4up {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 1000px;
+      margin: 48px auto 0;
+    }
+    .screens-4up img {
+      width: 100%;
+      border-radius: 16px;
+    }
 
     /* ── DESKTOP / MOBILE SWITCHING ── */
     .mobile-only { display: none !important; }
@@ -970,12 +981,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="sec-label reveal">Meet Andy</p>
     <h2 class="reveal">Ask Andy anything about your home</h2>
     <p class="sec-desc reveal">Andy checks your warranty status, files claims step-by-step, books service appointments, and answers every question — like having a home expert in your pocket.</p>
-    <img src="app-screens-2.png" class="screens-img reveal desktop-only" loading="lazy" alt="OwnWise Andy AI coverage check, warranty status, and repair booking screens" style="margin-top:52px;" />
+    <div class="screens-4up desktop-only reveal">
+      <img src="Ask Andy Anything 1.png" loading="lazy" alt="OwnWise Ask Andy chat" />
+      <img src="Ask Andy Anything 2.png" loading="lazy" alt="OwnWise appliance list" />
+      <img src="Ask Andy Anything 3.png" loading="lazy" alt="OwnWise coverage check" />
+      <img src="Ask Andy Anything 4.png" loading="lazy" alt="OwnWise repairs booking" />
+    </div>
     <div class="screens-mobile-grid mobile-only reveal">
-      <img src="block-3-1.png" loading="lazy" alt="OwnWise Andy chat" />
-      <img src="block-3-2.png" loading="lazy" alt="OwnWise coverage check" />
-      <img src="block-3-3.png" loading="lazy" alt="OwnWise likely covered" />
-      <img src="block-3-4.png" loading="lazy" alt="OwnWise repairs" />
+      <img src="Ask Andy Anything 1.png" loading="lazy" alt="OwnWise Ask Andy chat" />
+      <img src="Ask Andy Anything 2.png" loading="lazy" alt="OwnWise appliance list" />
+      <img src="Ask Andy Anything 3.png" loading="lazy" alt="OwnWise coverage check" />
+      <img src="Ask Andy Anything 4.png" loading="lazy" alt="OwnWise repairs booking" />
     </div>
   </div>
 </section>
